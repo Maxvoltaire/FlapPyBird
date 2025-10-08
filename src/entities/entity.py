@@ -6,6 +6,33 @@ from ..utils import GameConfig, get_hit_mask, pixel_collision
 
 
 class Entity:
+    """
+    Represents a game entity with position, size, image, and collision detection.
+    Attributes:
+        config (GameConfig): Game configuration object containing settings and screen.
+        x (float): X-coordinate of the entity's top-left corner.
+        y (float): Y-coordinate of the entity's top-left corner.
+        w (int): Width of the entity.
+        h (int): Height of the entity.
+        image (Optional[pygame.Surface]): Image representing the entity.
+        hit_mask (Optional[list[list[bool]]]): Pixel-perfect collision mask.
+        Additional attributes can be set via kwargs.
+    Methods:
+        update_image(image, w=None, h=None):
+            Updates the entity's image, hit mask, and optionally its size.
+        cx:
+            Returns the X-coordinate of the entity's center.
+        cy:
+            Returns the Y-coordinate of the entity's center.
+        rect:
+            Returns a pygame.Rect representing the entity's position and size.
+        collide(other):
+            Checks for collision with another entity, using pixel-perfect collision if available.
+        tick():
+            Draws the entity and, if debug mode is enabled, draws its bounding box and position info.
+        draw():
+            Draws the entity's image on the screen if available.
+    """
     def __init__(
         self,
         config: GameConfig,

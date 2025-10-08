@@ -18,6 +18,28 @@ from .utils import GameConfig, Images, Sounds, Window
 
 
 class Flappy:
+    """
+    Main class for the Flappy Bird game.
+    Handles game initialization, main loop, and transitions between game states:
+    splash screen, gameplay, and game over.
+    Attributes:
+        config (GameConfig): Configuration object containing game settings, resources, and state.
+    Methods:
+        __init__():
+            Initializes pygame, sets up the display, and loads game resources.
+        async start():
+            Main game loop. Cycles through splash, play, and game over states.
+        async splash():
+            Displays the welcome splash screen and waits for user input to start the game.
+        check_quit_event(event):
+            Checks for quit events (window close or escape key) and exits the game.
+        is_tap_event(event):
+            Determines if the user has tapped/clicked/flapped to interact with the game.
+        async play():
+            Runs the main gameplay loop, handling player movement, collision detection, and scoring.
+        async game_over():
+            Handles the game over state, animates the player crash, and waits for user input to restart.
+    """
     def __init__(self):
         pygame.init()
         pygame.display.set_caption("Flappy Bird")
